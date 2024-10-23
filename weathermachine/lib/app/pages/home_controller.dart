@@ -16,7 +16,7 @@ class HomeController extends Controller {
   @override
   void onInitState() {
     super.onInitState();
-    presenter.geetGreeting('Hola desde el inicio');
+    presenter.getWeather();
   }
 
   @override
@@ -29,13 +29,15 @@ class HomeController extends Controller {
     };
   }
 
-  void greetingOnNext(Weather weather) {
+  void weatherOnNext(Weather weather) {
     weather = weather;
     refreshUI();
   }
 
-  String returnedMsg(){
-    return this.weather?.greeting??'';
+  String testWeather(){
+    String test = weather?.sys.country??'error test';
+    String test2 = weather?.name??'error test';
+    return test + test2;
   }
 
 }

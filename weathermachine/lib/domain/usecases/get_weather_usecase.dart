@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:weathermachine/domain/entities/weather.dart';
 import 'package:weathermachine/domain/repositories/weather_repository.dart';
 
@@ -15,9 +16,9 @@ class GetWeatherUsecase
     final stream = StreamController<GetWeatherUseCaseResponse>();
 
     try {
-      final Weather example =
-          await weatherRepository.getGreetings(params!.greeting);
-      stream.add(GetWeatherUseCaseResponse(example));
+      Position position = await weatherRepository.getCurrentLocation();
+      Weather weather =  await weatherRepository.getWeather(position.latitude, position.longitude);
+      stream.add(GetWeatherUseCaseResponse(weather));
     } catch (e) {
       stream.addError(e);
     }
@@ -26,8 +27,8 @@ class GetWeatherUsecase
 }
 
 class GetWeatherUseCaseResponse {
-  final Weather example;
-  GetWeatherUseCaseResponse(this.example);
+  final Weather weather;
+  GetWeatherUseCaseResponse(this.weather);
 }
 
 class GetWeatherUseCaseParams {

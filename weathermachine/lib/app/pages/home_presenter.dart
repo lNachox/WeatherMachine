@@ -8,7 +8,7 @@ class HomePresenter extends Presenter {
   Function? getWeatherOnError;
   Function? getWeatherOnNext;
 
-  GetWeatherUsecase _getWeatherUseCase;
+  final GetWeatherUsecase _getWeatherUseCase;
 
   HomePresenter(WeatherRepository homeRepository)
       : _getWeatherUseCase = GetWeatherUsecase(homeRepository);
@@ -18,10 +18,10 @@ class HomePresenter extends Presenter {
     _getWeatherUseCase.dispose();
   }
 
-  void geetGreeting(String greeting) {
+  void getWeather() {
     _getWeatherUseCase.execute(
       _GetWeatherUseCaseObserver(this),
-      GetWeatherUseCaseParams(greeting)
+      GetWeatherUseCaseParams("")
     );
   }
 }
@@ -46,7 +46,7 @@ class _GetWeatherUseCaseObserver
   @override
   void onNext(GetWeatherUseCaseResponse? response) {
     assert(presenter.getWeatherOnNext != null);
-    presenter.getWeatherOnNext!(response!.example);
+    presenter.getWeatherOnNext!(response!.weather);
   }
 
 }
