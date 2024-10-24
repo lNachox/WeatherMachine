@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:geolocator/geolocator.dart';
+import 'package:weathermachine/domain/entities/hourly_weather.dart';
 import 'package:weathermachine/domain/entities/weather.dart';
 import 'package:weathermachine/domain/repositories/weather_repository.dart';
 import 'package:http/http.dart' as http;
@@ -54,6 +55,13 @@ class DataWeatherRepository implements WeatherRepository {
     final url = _constructWeatherUrl(lat, lon);
     final response = await _fetchData(url);
     return Weather.fromJson(response);
+  }
+
+  @override
+  Future<HourlyWeather> getHourlyForecast(double lat, double lon) async {
+    final url = _constructForecastUrl(lat,lon);
+    final response = await _fetchData(url);
+    return HourlyWeather.fromJson(response);
   }
 
   //* Fetch Data for a url

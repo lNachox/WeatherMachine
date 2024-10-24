@@ -5,6 +5,7 @@ import 'package:weathermachine/app/utils/constants.dart';
 import 'package:weathermachine/app/utils/strings.dart';
 import 'package:weathermachine/app/utils/text_styles.dart';
 import 'package:weathermachine/app/widgets/gradient_container.dart';
+import 'package:weathermachine/app/widgets/hourly_forecast.dart';
 import 'package:weathermachine/app/widgets/weather_info.dart';
 import 'package:weathermachine/data/remote/data_weather_repository.dart';
 
@@ -35,7 +36,7 @@ class _HomeViewState extends ResponsiveViewState<HomeView, HomeController> {
                       ),
                       // Country name text
                       Text(
-                        controller.weather?.name ?? "Temuco",
+                        controller.weather?.name ?? "City",
                         style: TextStyles.h1,
                       ),
 
@@ -102,6 +103,23 @@ class _HomeViewState extends ResponsiveViewState<HomeView, HomeController> {
 
                   // hourly forcast
                   //const HourlyForecastView(),
+                  SizedBox(
+                    height: 100,
+                    child: ListView.builder(
+                      itemCount: 12,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final forecast = controller.hourlyWeather?.list[index];
+                        return HourlyForcastTile(
+                          id: forecast?.weather[0].id??1,
+                          hour: forecast?.dt.toString()??"",
+                          temp: forecast?.main.temp.round()??0,
+                          isActive: index == 0,
+                        );
+                      },
+                    ),
+                  )
                 ],
               );
             },
@@ -193,6 +211,23 @@ class _HomeViewState extends ResponsiveViewState<HomeView, HomeController> {
 
                   // hourly forcast
                   //const HourlyForecastView(),
+                  SizedBox(
+                    height: 100,
+                    child: ListView.builder(
+                      itemCount: 12,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final forecast = controller.hourlyWeather?.list[index];
+                        return HourlyForcastTile(
+                          id: forecast?.weather[0].id??1,
+                          hour: forecast?.dt.toString()??"",
+                          temp: forecast?.main.temp.round()??0,
+                          isActive: index == 0,
+                        );
+                      },
+                    ),
+                  )
                 ],
               );
             },
@@ -217,7 +252,7 @@ class _HomeViewState extends ResponsiveViewState<HomeView, HomeController> {
                       ),
                       // Country name text
                       Text(
-                        controller.weather?.name ?? "Temuco",
+                        controller.weather?.name ?? "City",
                         style: TextStyles.h1,
                       ),
 
@@ -284,6 +319,23 @@ class _HomeViewState extends ResponsiveViewState<HomeView, HomeController> {
 
                   // hourly forcast
                   //const HourlyForecastView(),
+                  SizedBox(
+                    height: 100,
+                    child: ListView.builder(
+                      itemCount: 12,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final forecast = controller.hourlyWeather?.list[index];
+                        return HourlyForcastTile(
+                          id: forecast?.weather[0].id??1,
+                          hour: forecast?.dt.toString()??"",
+                          temp: forecast?.main.temp.round()??0,
+                          isActive: index == 0,
+                        );
+                      },
+                    ),
+                  )
                 ],
               );
             },
@@ -308,7 +360,7 @@ class _HomeViewState extends ResponsiveViewState<HomeView, HomeController> {
                       ),
                       // Country name text
                       Text(
-                        controller.weather?.name ?? "Temuco",
+                        controller.weather?.name ?? "City",
                         style: TextStyles.h1,
                       ),
 
@@ -375,6 +427,23 @@ class _HomeViewState extends ResponsiveViewState<HomeView, HomeController> {
 
                   // hourly forcast
                   //const HourlyForecastView(),
+                  SizedBox(
+                    height: 100,
+                    child: ListView.builder(
+                      itemCount: 12,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final forecast = controller.hourlyWeather?.list[index];
+                        return HourlyForcastTile(
+                          id: forecast?.weather[0].id??1,
+                          hour: forecast?.dt.toString()??"",
+                          temp: forecast?.main.temp.round()??0,
+                          isActive: index == 0,
+                        );
+                      },
+                    ),
+                  )
                 ],
               );
             },
