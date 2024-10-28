@@ -4,7 +4,15 @@
     <application
         android:label="weathermachine"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:hardwareAccelerated="true"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true">
+        <meta-data
+            android:name="com.google.android.gms.maps.VIEW_HYBRID"
+            android:value="true" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBRziddxdxStbd9q6Q7jy4LGVG-qLX71sE"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -14,6 +22,7 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
+            android:hardwareAccelerated="true"
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
