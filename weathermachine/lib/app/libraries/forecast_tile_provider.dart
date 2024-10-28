@@ -18,8 +18,7 @@ class ForecastTileProvider implements TileProvider {
     Uint8List tileBytes = Uint8List(0);
     try {
       final date = dateTime.millisecondsSinceEpoch ~/ 1000;
-      final url =
-          "http://maps.openweathermap.org/maps/2.0/weather/$mapType/$zoom/$x/$y?date=$date&opacity=$opacity&fill_bound=true&appid=9de243494c0b295cca9337e1e96b00e2";
+      final url = "http://maps.openweathermap.org/maps/2.0/weather/$mapType/$zoom/$x/$y?date=$date&opacity=$opacity&fill_bound=true&appid=#";
       if (TilesCache.tiles.containsKey(url)) {
         tileBytes = TilesCache.tiles[url]!;
       } else {

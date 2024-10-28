@@ -12,7 +12,7 @@ class DataWeatherRepository implements WeatherRepository {
   static const weeklyWeatherUrl = 
       'https://api.open-meteo.com/v1/forecast?current=&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto';
       
-  static const String apiKey = "d53a0c4db40164f0f514ce0d7266a96f";
+  static const String apiKey = "#";
 
   static String _constructWeatherUrl(double lat, double lon) =>
       '$baseUrl/weather?lat=$lat&lon=$lon&units=metric&appid=${apiKey}';
